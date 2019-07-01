@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	 http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	  http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	  http://www.springframework.org/schema/mvc
+	 http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	">
+    <!-- 添加扫描注解控制器 -->
+    <context:component-scan base-package="com.k9501.www.controller,com.k9501.www.protal.controller"></context:component-scan>
+
+  
+    <!-- 在springmvc配置文件添加jackson转换支持  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJackson2HttpMessageConverter" />
+            </list>
+        </property>
+     </bean>
+     <bean id="mappingJackson2HttpMessageConverter" 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+            	<value>application/json;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/json;charset=UTF-8</value>    
+            </list>
+        </property>
+     </bean> 
+         -->
+    <mvc:annotation-driven/>
+     
+     
+     <!-- 视图解析器 -->
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+     <property name="prefix" value="/page/"></property>
+     <property name="suffix" value=".jsp"></property>
+   </bean>
+
+
+
+     <!-- 实现文件上传的配置  -->
+	  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">   
+	    <property name="defaultEncoding" value="UTF-8"/>    
+	    <property name="maxUploadSize" value="5242880"/> 
+	  </bean> 
+
+     
+     <!-- 静态资源文件放行 -->
+     <mvc:default-servlet-handler/>  
+</beans>
