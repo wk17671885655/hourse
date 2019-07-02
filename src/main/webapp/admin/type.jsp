@@ -79,7 +79,6 @@
              $("#ModiyDialogForm1").form('load',selectRow);
         }
         function Up() {
-            alert("123");
             $('#ModiyDialogForm1').form('submit',{
                 url:"updateType",
                 success:function (date) {
