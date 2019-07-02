@@ -24,10 +24,10 @@ rel=stylesheet type=text/css href="../css/style.css">
   <TBODY>
   <c:forEach items="${pageInfo.list}" var="fo">
   <TR>
-    <TD class=house-thumb><SPAN><A href="details.htm" target="_blank"><img src="http://localhost:80/${fo.path}" width="100" height="75" alt=""></A></SPAN></TD>
+    <TD class=house-thumb><SPAN><A href="godetails?id=${fo.id}" target="_blank"><img src="http://localhost:80/${fo.path}" width="100" height="75" alt=""></A></SPAN></TD>
     <TD>
       <DL>
-          <DT><A href="details.htm" target="_blank">${fo.title}</A><c:if test="${fo.ispass==0}"><div style="color: red">(审核中)</div></c:if></DT>
+          <DT><A href="godetails?id=${fo.id}" target="_blank">${fo.title}</A><c:if test="${fo.ispass==0}"><div style="color: red">(审核中)</div></c:if></DT>
         <DD>${fo.dname}&nbsp;&nbsp;${fo.sname},面积:${fo.floorage}m&sup2;,${fo.tname}<BR>联系方式：${fo.contact} </DD></DL></TD>
     <TD class=house-type><LABEL class=ui-green><INPUT onclick=window.location.href="getUserHouse?id=${fo.id}" value="修    改" type=button name=search></LABEL></TD>
     <TD class=house-price><LABEL class=ui-green><INPUT  onclick=window.location.href="isdel?id=${fo.id}"    value="删    除" type=button name=search></LABEL></TD></TR>

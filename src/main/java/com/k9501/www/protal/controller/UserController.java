@@ -32,9 +32,15 @@ public class UserController {
     }
 //登录用户
     @RequestMapping("login")
-    public String login(String name, String password, Model model, HttpSession session){
-        Users user = userService.login(name, password);
-
+    public String login(String name, String password,Integer isadmin, Model model, HttpSession session){
+       //判断是否为管理员
+        boolean isAdmin=false;
+        if(isadmin==null){//该用户为管理员
+            isadmin=0;
+        }else {
+            isAdmin=true;
+        }
+        Users user = userService.login(name, password,isadmin);
         if(user==null){
             model.addAttribute("info","用户名密码错误");
           // 继续登录
@@ -45,7 +51,11 @@ public class UserController {
 //            用户保存时间45秒
 //            session.setMaxInactiveInterval(45);
           // 进入登录页面
-            return "guanli";
+            if (!isAdmin) {
+                return "guanli";
+            }else {
+                return "redirect:/admin/admin.html";
+            }
         }
     }
 }

@@ -24,7 +24,12 @@ rel=stylesheet type=text/css href="../css/style.css">
   <TR>
     <TD class=field>密　　码：</TD>
     <TD><!-- <input type="password" class="text" name="password" /> --><INPUT 
-      id=user_password class=text type=password name=password> </TD></TR><!--
+      id=user_password class=text type=password name=password> </TD></TR>
+  <TR>
+    <TD class=field></TD>
+    <TD><input type="checkbox" name="isadmin" value="1" />
+      管理员
+    </TD></TR><!--
 						<tr>
 							<td class="field">验 证 码：</td>
 							<td><input type="text" class="text verycode" name="veryCode" /></td>

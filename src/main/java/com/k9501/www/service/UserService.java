@@ -51,5 +51,5 @@ public interface UserService {
     /*
     * 实现登录，并返回对象保存在域中
     */
-    public Users login(String username, String password) ;
+    public Users login(String username, String password,Integer isadmin) ;
 }

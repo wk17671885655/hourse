@@ -99,13 +99,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Users login(String username, String password) {
+    public Users login(String username, String password,Integer isadmin) {
         //添加搜索条件
-        System.out.println(username);
-        System.out.println(password);
         UsersExample usersExample=new UsersExample();
         UsersExample.Criteria criteria = usersExample.createCriteria();
-        criteria.andIsadminEqualTo(0);
+        criteria.andIsadminEqualTo(isadmin);
         criteria.andNameEqualTo(username);
         criteria.andPasswordEqualTo(MD5Utils.md5Encrypt(password));
         //执行搜索
